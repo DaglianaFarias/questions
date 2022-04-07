@@ -1,0 +1,27 @@
+
+<table>
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.name %></td>
+        <td>
+          <%= link_to edit_template_path(template) do %>
+            <button type="button">Editar</button>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to template_path(template) do %>
+            <button type="button">Visualizar</button>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "excluir", template_path(template), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to new_template_path do %>
+  <button type="button">Novo template</button>
+<% end %>

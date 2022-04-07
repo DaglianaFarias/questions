@@ -1,0 +1,8 @@
+<div>
+  <%= simple_form_for @template do |f| %>
+    <div>
+      <div><%= f.input :name, presence: true %></div>
+      <p><%= f.button :submit %></p>
+    </div>
+  <% end %>
+</div>
