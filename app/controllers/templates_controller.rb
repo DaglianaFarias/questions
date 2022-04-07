@@ -5,8 +5,13 @@ class TemplatesController < ApplicationController
     @templates = Template.all
   end
 
+  def show
+    @questions = TemplateQuestion.all
+  end
+
   def new
     @template = Template.new
+    @template.template_questions.build
   end
 
   def create
@@ -41,7 +46,8 @@ class TemplatesController < ApplicationController
   private
 
   def params_template
-    params.require(:template).permit(:name)
+    params.require(:template).permit(:name,
+      template_questions_attributes: [:id, :question_title, :question_type, :_destroy])
   end
 
   def set_template

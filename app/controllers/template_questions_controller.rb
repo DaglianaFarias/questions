@@ -1,2 +1,0 @@
-class TemplateQuestionsController < ApplicationController
-end

@@ -11,3 +11,5 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require cocoon

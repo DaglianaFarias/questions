@@ -1,0 +1,17 @@
+<div>
+  <%= simple_form_for @template do |f| %>
+  <div>
+    <div><%= f.input :name, presence: true %></div>
+
+    <div id="template_questions ">
+      <%= f.simple_fields_for :template_questions do |question| %>
+        <%= render 'template_question_fields', f: question %>
+      <% end %>
+      <%= link_to_add_association '[Adicionar Perguntas]', f, :template_questions %>
+    </div>
+
+    <p><%= f.button :submit %></p>
+  </div>
+  <% end %>
+</div>
+

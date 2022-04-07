@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 2022_04_07_010328) do
   create_table "template_questions", force: :cascade do |t|
     t.text "question_title"
     t.integer "question_type"
-    t.integer "template_id_id", null: false
+    t.integer "template_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["template_id_id"], name: "index_template_questions_on_template_id_id"
+    t.index ["template_id"], name: "index_template_questions_on_template_id"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -27,5 +27,5 @@ ActiveRecord::Schema.define(version: 2022_04_07_010328) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "template_questions", "template_ids"
+  add_foreign_key "template_questions", "templates"
 end
