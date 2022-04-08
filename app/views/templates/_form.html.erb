@@ -1,17 +1,60 @@
+<% if @template.errors.any?%>
+  <div class="alert alert-danger alert-warning alert-dismissible fade show" role="alert">
+      <ul>
+        <% @template.errors.full_messages.each do |message| %>
+          <li> <%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
+
 <div>
   <%= simple_form_for @template do |f| %>
   <div>
-    <div><%= f.input :name, presence: true %></div>
+    <div class="field_control">
+      <span>Nome do Template</span>
+      <%= f.input :name,
+        presence: true,
+        label: false,
+        input_html: {
+          id: "template_name"
+        } %>
+    </div>
 
-    <div id="template_questions ">
+    <div id="template_questions">
       <%= f.simple_fields_for :template_questions do |question| %>
         <%= render 'template_question_fields', f: question %>
       <% end %>
-      <%= link_to_add_association '[Adicionar Perguntas]', f, :template_questions %>
+      <div>
+        <%= link_to_add_association '[Adicionar Perguntas]', f, :template_questions %>
+      </div>
     </div>
 
-    <p><%= f.button :submit %></p>
+    <p>
+      <button type="submit" id="template_submit" <%= 'disabled=true' if @template.new_record? %>>
+        Submit
+      </button>
+    </p>
+
   </div>
   <% end %>
 </div>
 
+<script type="text/javascript">
+  $( "#template_name" ).change(function() {
+    $.ajax({
+      url: '/templates/validate_name/' + $(this).val(),
+      type: 'get',
+      dataType: 'JSON',
+      success: function (json) {
+        if(json.resposta){
+          $('#template_submit').prop("disabled", false);
+        } else {
+          alert("NOME JA UTILIZADO!!!!!!!!");
+          $('#template_submit').prop("disabled", true);
+        }
+      }
+    });
+  });
+</script>

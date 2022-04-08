@@ -1,6 +1,17 @@
 <div class="nested-fields">
-  <%= f.label :question_title %> <br> Descrição pergunta
-  <%= f.input :question_title %>
-  <%= f.input :question_type %>
+  <div class="field_control">
+    <span>Título da Questão</span>
+    <%= f.input :question_title,
+     as: :text,
+     label: false %>
+  </div>
+  <div class="field_control">
+    <span>Tipo da Questão</span>
+    <%= f.input :question_type,
+            required: true,
+            collection: TemplateQuestion.question_type_to_select,
+            prompt: "Select type",
+            label: false %>
+  </div>
   <%= link_to_remove_association "excluir pergunta", f %>
 </div>

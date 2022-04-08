@@ -1,12 +1,12 @@
 class TemplatesController < ApplicationController
-  before_action :set_template, only: [:edit, :update, :destroy]
+  before_action :set_template, only: [:edit, :update, :show, :destroy]
 
   def index
     @templates = Template.all
   end
 
   def show
-    @questions = TemplateQuestion.all
+    @questions = @template.template_questions
   end
 
   def new
@@ -36,10 +36,16 @@ class TemplatesController < ApplicationController
 
   def destroy
     if @template.destroy
-      redirect_to templates_path
+      redirect_to templates_path, notice: "Template excluído com sucesso!"
     else
       render :index
     end
+  end
+
+  def validate_name
+    name = params[:name]
+    resposta = Template.find_by(name: name).blank?
+    render json: { resposta: resposta }
   end
 
 

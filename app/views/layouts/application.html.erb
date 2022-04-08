@@ -8,9 +8,55 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <p>Header</p>
+    </header>
+    <section>
+      <%= yield %>
+    </section>
+    <aside>
+    <p>sidebar</p>
+    </aside>
   </body>
 </html>
+
+<style>
+  body, html {
+    width: 100%;
+    height: 100%;
+    background:blue;
+    margin:0;
+    padding:0;
+}
+  body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+    'barra-lateral cabecalho'
+    'barra-lateral secao';
+  }
+
+  header {
+   grid-area: cabecalho;
+   background-color: #C8CCD0;
+  }
+
+  section {
+    grid-area: secao;
+    background-color: #F1F2F6;
+  }
+
+   aside {
+    grid-area: barra-lateral;
+    background-color: #38405F;
+
+   }
+
+</style>

@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'templates#index'
   resources :templates
   resources :template_questions
+
+  get '/templates/validate_name/:name', to: 'templates#validate_name'
 end
