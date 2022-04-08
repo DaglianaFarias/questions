@@ -11,7 +11,6 @@ class TemplatesController < ApplicationController
 
   def new
     @template = Template.new
-    @template.template_questions.build
   end
 
   def create
@@ -23,8 +22,7 @@ class TemplatesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @template.update(params_template)

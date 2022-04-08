@@ -1,13 +1,44 @@
+<div class="container">
+  <div class="container-header">
+    <span></span>
+    <p>Template: <%= @template.name.upcase %></p>
+  </div>
+<hr>
+<h3>Questões cadastradas</h3>
+  <% @questions.each do |question| %>
+    <div class="question">
+      <div>
+        <strong>Título da Questão:</strong>
+        <span><%= question.question_title %></span>
+      </div>
+      <div>
+        <strong>Tipo: </strong>
+        <span><%= question.question_type&.upcase %></span>
+      </div>
+      <div>
+        <strong>Updated_at: </strong>
+        <span><%= question.updated_at %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style type="text/css">
+  .question {
+  background-color: #f2f2f2;
+  margin:  10px 0px 10px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+
+  .question div {
+    margin: 5px;
+  }
+
+</style>
 
 
-  <table>
-  <tbody>
-    <p><%= @template.name %></p>
 
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.question_title %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

@@ -1,16 +1,138 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  background:blue;
+  margin:0;
+  padding:0;
+}
+body {
+  display: grid;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas:
+  'cabecalho cabecalho'
+  'barra-lateral secao';
+}
+
+header {
+ grid-area: cabecalho;
+ background-color: #E5E5E5;
+ display: flex;
+ align-items: center;
+ font-size: 1.5em;
+ padding: 20px;
+ font-weight: 700;
+}
+
+section {
+  grid-area: secao;
+  background-color: #F1F2F6;
+}
+
+aside {
+  grid-area: barra-lateral;
+  background-color: #14213D;
+  display: flex;
+  font-size: 15px;
+  color: white;
+  padding: 20px;
+  font-weight: 700;
+
+}
+
+aside a {
+  color: white;
+}
+
+.container {
+background-color: white;
+margin:  10px;
+padding: 10px;
+box-shadow:  3px -2px 20px rgba(211, 208, 208, 0.884);
+}
+
+.barra-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.acao {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #605F5E;
+  color: white;
+  font-size: 14px;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.button a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button-new {
+  background-color: #008CBA;
+}
+
+.button-delete {
+  background-color: #f44336;
+}
+
+.button-edit {
+  background-color: #4CAF50;
+}
+
+.button-show a {
+  color: black;
+}
 
 .field_control {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
 }
-/*textarea {
-  width: 80%;
-  height: 120px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  resize: none;
-}*/
+
+.container-header {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.panel-cocoon {
+  background-color: #f2f2f2;
+  margin:  10px 0px 10px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

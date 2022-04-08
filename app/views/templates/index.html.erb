@@ -1,29 +1,43 @@
 
-
-
-
-<table>
-  <tbody>
-    <% @templates.each do |template| %>
-      <tr>
-        <td>
-          <%= link_to template.name, template_path(template) %>
-        </td>
-        <td>
-          <%= link_to edit_template_path(template) do %>
-            <button type="button">Editar</button>
+<div class="container">
+  <div class="barra-title container-header">
+    <span>Lista de Templates</span>
+    <div class="button button-new"><%= link_to "CADASTRAR TEMPLATE", new_template_path %></div>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>NOME</th>
+          <th>DATA DE ATUALIZAÇÃO</th>
+          <th class="acao">AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @templates.blank? %>
+          <tr>
+            <td colspan="3" style="text-align: center">Nenhum template cadastrado</td>
+          </tr>
+        <% else %>
+          <% @templates.each do |template| %>
+          <tr>
+            <td>
+              <span class="button-show"><%= link_to template.name, template_path(template) %></span>
+            </td>
+            <td>
+              <%= template.updated_at %>
+            </td>
+            <td class="acao">
+              <span class="button button-edit "><%= link_to "EDITAR", edit_template_path(template)  %></span>
+              <span class="button button-delete"><%= link_to "EXCLUIR", template_path(template), method: :delete, data:{ confirm: "Tem certeza?" } %></span>
+            </td>
+          </tr>
           <% end %>
-        </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-        <td>
-          <%= link_to "excluir", template_path(template), method: :delete %>
-        </td>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to new_template_path do %>
-  <button type="button">Novo template</button>
-<% end %>

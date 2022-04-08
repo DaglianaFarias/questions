@@ -8,38 +8,35 @@
   </div>
 <% end %>
 
-
-<div>
-  <%= simple_form_for @template do |f| %>
+<%= simple_form_for @template do |f| %>
   <div>
     <div class="field_control">
       <span>Nome do Template</span>
       <%= f.input :name,
+        as: :text,
         presence: true,
         label: false,
         input_html: {
-          id: "template_name"
-        } %>
+          id: "template_name",
+          cols: 60
+        }
+      %>
     </div>
-
+    <div>
+      <span class="button button-new "><%= link_to_add_association 'ADICIONAR QUESTÃO', f, :template_questions, 'data-association-insertion-node' => "#template_questions" %></span>
+    </div>
     <div id="template_questions">
       <%= f.simple_fields_for :template_questions do |question| %>
         <%= render 'template_question_fields', f: question %>
       <% end %>
-      <div>
-        <%= link_to_add_association '[Adicionar Perguntas]', f, :template_questions %>
-      </div>
     </div>
-
     <p>
-      <button type="submit" id="template_submit" <%= 'disabled=true' if @template.new_record? %>>
-        Submit
+      <button type="submit" id="template_submit">
+        ENVIAR
       </button>
     </p>
-
   </div>
-  <% end %>
-</div>
+<% end %>
 
 <script type="text/javascript">
   $( "#template_name" ).change(function() {
@@ -51,7 +48,7 @@
         if(json.resposta){
           $('#template_submit').prop("disabled", false);
         } else {
-          alert("NOME JA UTILIZADO!!!!!!!!");
+          alert("NOME DE TEMPLATE JA UTILIZADO!");
           $('#template_submit').prop("disabled", true);
         }
       }
